@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- 欢迎页面 -->
+    <div id="welcome-section">
+        <h1>欢迎来到生日庆祝页面</h1>
+        <button onclick="showBirthdaySection()">请点击此按钮</button>
+    </div>
+
+    <!-- 左侧装饰图案 -->
+    <div id="left-side-decorations" class="hidden">
+        <img src="sun.png" alt="太阳" class="decoration-item">
+        <img src="hua.png" alt="花" class="decoration-item">
+        <img src="cao.png" alt="草" class="decoration-item">
+    </div>
+
+    <!-- 右侧装饰图案 -->
+    <div id="right-side-decorations" class="hidden">
+        <img src="moon.png" alt="月亮" class="decoration-item">
+        <img src="star.png" alt="星球" class="decoration-item">
+        <img src="planet.png" alt="星球" class="decoration-item">
+    </div>
+
+    <!-- 飘落的背景图标 -->
+    <div id="falling-icons-container" class="hidden"></div>
+
+    <!-- 生日蛋糕点击播放视频部分 -->
+    <div id="birthday-section" class="hidden">
+        <h1>24岁生日快乐！</h1>
+        <h2>点击蛋糕，查看你的祝福视频！</h2>
+
+        <div id="cake-container">
+            <img src="cake.png" alt="生日蛋糕" id="cake" onclick="showVideo()">
+        </div>
+
+        <div id="video-container" class="hidden">
+            <h3>来自张艺兴的生日祝福视频</h3>
+            <!-- 动态插入视频的 iframe -->
+            <div id="video-frame"></div>
+            <button onclick="hideVideo()">关闭视频</button>
+        </div>
+    </div>
+
+    <!-- 四季背景部分 -->
+    <section id="seasons-section" class="hidden">
+        <div class="season" id="spring">
+            <h2>春天的诗</h2>
+            <p>岁岁春无事，相逢总玉颜‌。</p>
+        </div>
+
+        <div class="season" id="summer">
+            <h2>夏天的诗</h2>
+            <p>忽忽日北至，岁月良可惊。虽云一草死，万物尚华荣。</p>
+        </div>
+
+        <div class="season" id="autumn">
+            <h2>秋天的诗</h2>
+            <p>‌愿君千万岁，无岁不逢春。</p>
+        </div>
+
+        <div class="season" id="winter">
+            <h2>冬天的诗</h2>
+            <p>雪覆千山庆生辰，寒梅傲立送温馨。岁华又至添新喜，笑语欢歌暖冬心。</p>
+        </div>
+    </section>
+
+    <script>
+        // 显示生日页面内容
+        function showBirthdaySection() {
+            document.getElementById('welcome-section').style.display = 'none';  // 隐藏欢迎页面
+            document.getElementById('left-side-decorations').classList.remove('hidden'); // 显示左侧装饰
+            document.getElementById('right-side-decorations').classList.remove('hidden'); // 显示右侧装饰
+            document.getElementById('falling-icons-container').classList.remove('hidden'); // 显示飘落图标
+            document.getElementById('birthday-section').classList.remove('hidden'); // 显示生日内容
+            document.getElementById('seasons-section').classList.remove('hidden'); // 显示四季背景
+        }
+
+        // 显示视频部分
+        function showVideo() {
+            const videoContainer = document.getElementById('video-container');
+            videoContainer.classList.remove('hidden');
+
+            // 动态创建 iframe，设置自动播放参数
+            const videoFrame = document.getElementById('video-frame');
+            const iframe = document.createElement('iframe');
+            iframe.src = "https://player.bilibili.com/player.html?isOutside=true&aid=287950641&bvid=BV1Bf4y1v7ww&cid=259397743&p=1&autoplay=1"; // 自动播放
+            iframe.width = "360";  // 竖屏宽度
+            iframe.height = "640"; // 竖屏高度
+            iframe.scrolling = "no";
+            iframe.frameborder = "0";
+            iframe.allowfullscreen = "true";
+            iframe.allow = "autoplay; encrypted-media"; // 允许自动播放
+
+            // 清空之前插入的 iframe，防止重复播放
+            videoFrame.innerHTML = "";
+            videoFrame.appendChild(iframe);
+        }
+
+        // 隐藏视频部分
+        function hideVideo() {
+            const videoContainer = document.getElementById('video-container');
+            videoContainer.classList.add('hidden');
+            const videoFrame = document.getElementById('video-frame');
+            videoFrame.innerHTML = "";  // 清空内容以停止播放
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-top: 15px;
+}
+
+#cake-container {
+    margin-top: 30px;
+}
+
+#cake {
+    width: 200px;
+    cursor: pointer;
+}
+
+#video-container {
+
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+iframe {
+    width: 360px; /* 竖屏宽度 */
+    height: 640px; /* 竖屏高度 */
+
+}
+
+#seasons-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.season {
+    width: 22%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    color: white;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+
+#spring {
+    background-image: url('spring.jpg');
+}
+
+#summer {
+    background-image: url('summer.jpg');
+}
+
+#autumn {
+    background-image: url('autumn.jpg');
+}
+
+#winter {
+    background-image: url('winter.jpg');
+}
+
+/* 左侧装饰图案 */
+#left-side-decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20vw; /* 占左侧 10% 的宽度 */
+    height: 50vh; /* 填满整个页面高度 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 图标之间均匀分布 */
+    align-items: center;
+    z-index: -1; /* 确保不会挡住内容 */
+    padding: 20px 0; /* 控制上下的内边距 */
+}
+
+/* 右侧装饰图案 */
+#right-side-decorations {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 20vw; /* 占右侧 10% 的宽度 */
+    height: 50vh; /* 填满整个页面高度 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: -1;
+    padding: 20px 0;
+}
+
+/* 装饰图案样式 */
+.decoration-item {
+    width: 8vw; /* 图案占宽度的 8% */
+    height: auto;
+    opacity: 0.9; /* 透明度 */
+    animation: float 5s ease-in-out infinite; /* 使图案上下浮动 */
+}
+
+/* 简单的浮动动画 */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* 向上浮动 10px */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+.decoration-item {
+    animation: float 5s ease-in-out infinite; /* 使图案有上下浮动的效果 */
+}
+
+
+
+/* 背景图标容器 */
+#falling-icons-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* 避免干扰页面交互 */
+    overflow: hidden;
+    z-index: -1; /* 确保不会挡住内容 */
+}
+
+/* 飘落的元素样式 */
+.falling-icon {
+    position: absolute;
+    top: -100px;
+    width: 50px; /* 图片大小 */
+    height: 50px;
+    animation: fall linear infinite, sway infinite;
+    opacity: 0.9;
+
+}
+
+/* 控制图片下落 */
+@keyframes fall {
+    to {
+        transform: translateY(100vh); /* 从顶部到页面底部 */
+    }
+}
+
+/* 控制左右飘动的效果 */
+@keyframes sway {
+    0% {
+        transform: translateX(0) rotate(0deg); /* 原位 */
+    }
+    50% {
+        transform: translateX(20px) rotate(5deg); /* 向右飘 */
+    }
+    100% {
+        transform: translateX(-20px) rotate(-5deg); /* 向左飘 */
+    }
+}
